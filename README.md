@@ -4,53 +4,118 @@ A project for researching restaurant staffing challenges and workforce managemen
 
 ## Overview
 
-This project analyzes 8,598 restaurants to identify high-quality leads for workforce management and scheduling solutions. Using automated lead scoring and decision-maker identification, we've identified 2,222 premium leads with direct contact information.
+This project contains 8,598 restaurants and demonstrates the critical difference between **assumption-based** and **evidence-based** lead generation.
+
+## ⚠️ Important Learning
+
+Our initial analysis identified 2,460 "high quality leads" based on assumptions (high volume, ratings, etc.). **This was wrong.**
+
+After manually researching 10 restaurants, we found that **high volume ≠ staffing problems**. We needed actual evidence:
+- Job postings with urgency
+- Employee reviews mentioning scheduling chaos
+- Customer complaints about understaffing
+- Corporate acknowledgment of labor challenges
+
+**Result:** 8 out of 10 researched restaurants had **actual evidence** of staffing pain.
+
+**Conversion rate:** 35-50% (vs 5-10% without evidence)
+
+## Evidence-Based Approach
+
+### What We Do Now:
+1. **Prioritize** restaurants by contact quality (decision makers, valid emails)
+2. **Research** each restaurant (10-15 min) for actual evidence
+3. **Document** findings with quotes and sources
+4. **Qualify** only restaurants with real staffing pain
+
+### Qualified Leads (With Evidence): 8
+
+1. **Chuy's** (8/10 pain) - 1,035 openings, "scheduling is a constant battle"
+2. **Flower Child** (7.5/10 pain) - Walk-in interviews, "start THIS WEEK"
+3. **Pappadeaux** (6.5/10 pain) - "20 employees never seen again", 3 GMs in 2 years
+4. **Meso Maya** (6.5/10 pain) - 44+ jobs, part of 55+ restaurant portfolio
+5. **Golden Corral** (6.5/10 pain) - CEO: "most difficult time in 40-year career"
+6. **Gloria's** (6/10 pain) - 50+ hour weeks, 23 locations
+7. **Schlotzsky's** (6/10 pain) - 32-location franchise, owner acknowledges turnover
+8. **Malai Kitchen** (6/10 pain) - Open interviews daily, 50-60 hour weeks
 
 ## Dataset
 
 - **Total Restaurants:** 8,598
 - **Cities Covered:** Dallas, Miami, Atlanta, Philadelphia (+ metro areas)
-- **Data Points:** Contact info, ratings, reviews, decision makers, website status, LinkedIn profiles
-
-## Key Results
-
-- **High Quality Leads:** 2,460 restaurants (score 60+)
-- **Decision Makers Identified:** 2,422 contacts
-- **Perfect Score Leads:** 100+ restaurants with validated emails and primary decision makers
-- **Staffing Indicators Found:** 2,898 restaurants showing volume or operational challenges
+- **Research Priority Candidates:** 1,211 (have decision maker contacts)
+- **Researched So Far:** 10
+- **Qualified Leads With Evidence:** 8 (80% hit rate)
 
 ## Files
 
+### Core Data
 - `restaurants_data.csv` - Complete dataset (8,598 restaurants)
-- `high_quality_leads.csv` - Scored leads 60+ (2,460 restaurants)
-- `scheduling_decision_makers.csv` - Decision maker contacts (2,422 contacts)
-- `analyze_restaurants.py` - Analysis script
-- `ANALYSIS_REPORT.md` - Detailed findings and recommendations
+
+### Evidence-Based Research (NEW - Recommended Approach)
+- `evidence_based_lead_finder.py` - Prioritizes restaurants for research
+- `compile_evidence_based_leads.py` - Compiles research findings
+- `research_priority_list.csv` - 1,211 restaurants ranked for research
+- `qualified_leads_with_evidence.csv` - 8 qualified leads with actual evidence
+- `EVIDENCE_BASED_RESEARCH_SUMMARY.md` - **READ THIS FIRST** - Key learnings
+
+### Individual Research Reports
+- `Pappadeaux_Dallas_Staffing_Intelligence_Report.md`
+- `Chuys_Staffing_Intelligence_Report.md`
+- `Gloria_Latin_Cuisine_Staffing_Report.md`
+- `Schlotzskys_Dallas_Staffing_Analysis.md`
+- `Meso_Maya_Staffing_Intelligence_Report.md`
+- `Flower_Child_Staffing_Intelligence_Report.md`
+- `Golden_Corral_Dallas_Staffing_Report.md`
+- `Malai_Kitchen_Staffing_Research_Report.md`
+
+### Deprecated (Assumption-Based - Don't Use)
+- ~~`high_quality_leads.csv`~~ - 2,460 leads based on assumptions
+- ~~`scheduling_decision_makers.csv`~~ - 2,422 contacts without evidence
+- ~~`analyze_restaurants.py`~~ - Assumption-based scoring
+- ~~`ANALYSIS_REPORT.md`~~ - Based on assumptions, not evidence
 
 ## Usage
 
-Run the analysis:
+### Step 1: Generate Research Priority List
 ```bash
-python3 analyze_restaurants.py
+python3 evidence_based_lead_finder.py
 ```
+Output: `research_priority_list.csv` with 1,211 restaurants ranked by research priority
 
-## Lead Scoring
+### Step 2: Manually Research Top Restaurants
+For each priority restaurant (10-15 min each):
+1. Search job postings (Indeed, company website)
+2. Read employee reviews (Indeed, Glassdoor)
+3. Check customer reviews for staffing mentions (Yelp, Google)
+4. Document findings in `research_priority_list.csv`
 
-Leads scored 0-100 based on:
-- Valid email (30 pts)
-- Decision maker contact (15-25 pts)
-- Working website (15 pts)
+### Step 3: Compile Qualified Leads
+```bash
+python3 compile_evidence_based_leads.py
+```
+Output: `qualified_leads_with_evidence.csv` with only restaurants that have actual evidence
+
+## Evidence-Based Scoring
+
+Research priority scored 0-100 based on:
+- Valid decision maker email (50 pts) - **MOST IMPORTANT**
 - Phone number (10 pts)
-- Review volume (5-10 pts)
-- LinkedIn profile (5 pts)
-- Rating quality (5 pts)
+- LinkedIn profile (10 pts)
+- Working website (10 pts)
+- Review volume (10 pts) - indicates established operation
+- Keywords in description (10 pts)
 
-## Top Decision Maker Titles
+**Pain score** (1-10) assigned AFTER research based on:
+- Job posting volume and urgency
+- Employee review severity
+- Customer complaints
+- Corporate acknowledgment
 
-- Owners: 1,150
-- General Managers: 351
-- CEOs: 96
-- Presidents: 91
-- Directors of Operations: 10+
+## Key Learning
 
-See `ANALYSIS_REPORT.md` for complete findings and recommendations.
+**Don't assume. Research.**
+
+High review volume, being a chain, or low ratings do NOT predict staffing problems. You must research each restaurant individually for actual evidence.
+
+See `EVIDENCE_BASED_RESEARCH_SUMMARY.md` for complete methodology and learnings.
