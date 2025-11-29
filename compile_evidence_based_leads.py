@@ -35,13 +35,13 @@ RESEARCHED_RESTAURANTS = {
         "evidence_found": "Yes",
         "pain_score": 8.0,
         "evidence": [
-            "1,035 open positions across chain",
-            "Chronically short staffed (employee reviews)",
-            "Scheduling was constant battle - forget availability",
-            "Corporate acknowledged 'labor scheduling improvements' needed",
-            "Customers told directly about staffing issues"
+            "1,035 open positions across chain (verified Nov 2025)",
+            "Chronically short staffed (employee reviews 2024-2025)",
+            "Scheduling was constant battle - forget availability (recent reviews)",
+            "⚠️ STALE: Corporate acknowledged 'labor scheduling improvements' (2018 - already implemented)",
+            "Customers told directly about staffing issues (2024 reviews)"
         ],
-        "recommendation": "PURSUE IMMEDIATELY - Critical staffing crisis"
+        "recommendation": "PURSUE IMMEDIATELY - Critical staffing crisis (use fresh signals only)"
     },
     "Gloria's Latin Cuisine": {
         "evidence_found": "Yes",
@@ -95,13 +95,13 @@ RESEARCHED_RESTAURANTS = {
         "evidence_found": "Yes",
         "pain_score": 6.5,
         "evidence": [
-            "6 open positions at location",
-            "CEO: 'most difficult time for staffing in 40-year career'",
-            "Employees: 'constantly reducing staff, scheduled 3 days work 1-2'",
-            "Customers: service extremely slow, no drink refills",
-            "Sun Holdings operates 22 Golden Corrals - expansion opportunity"
+            "6 open positions at location (verified Nov 2025)",
+            "⚠️ STALE: CEO: 'most difficult time for staffing in 40-year career' (Oct 2021 - 3+ years old)",
+            "Employees: 'constantly reducing staff, scheduled 3 days work 1-2' (recent reviews)",
+            "Customers: service extremely slow, no drink refills (2024-2025 reviews)",
+            "Sun Holdings operates 22 Golden Corrals - franchise expansion opportunity"
         ],
-        "recommendation": "PURSUE - Franchise expansion opportunity"
+        "recommendation": "PURSUE - Franchise expansion opportunity (use fresh signals, not CEO quote)"
     },
     "Malai Kitchen": {
         "evidence_found": "Yes",
