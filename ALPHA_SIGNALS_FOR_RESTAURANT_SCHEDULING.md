@@ -353,59 +353,489 @@ Not all signals last forever. **Timing matters.** ⚠️ **CRITICAL: Always chec
 
 ---
 
-## NEXT-LEVEL ALPHA SIGNALS (To Develop)
+## NEXT-LEVEL ALPHA SIGNALS (Fully Developed)
 
-Ideas for **even more unique** signals:
+**Research Completed:** November 2025
+**Status:** 6 highly feasible, 2 partially feasible, 2 limited/not feasible
 
-**1. Health Inspection Timing**
-- Signal: Recent health inspection = renewed focus on compliance
-- **Angle:** Labor law compliance, overtime tracking, break compliance
-- **Source:** City/county health department databases
+Below are 10 advanced alpha signals with complete feasibility assessments, data sources, implementation approaches, and operationalization plans.
 
-**2. Liquor License Applications for New Locations**
-- Signal: 3-6 months before opening (liquor license filed before buildout)
-- **Angle:** "Get scheduling system in place before Day 1"
-- **Source:** State liquor control board filings
+---
 
-**3. Yelp Waitlist/Reservation Wait Times**
-- Signal: Consistently long waits = high volume = complex scheduling
-- **Angle:** "Optimize labor for your peaks"
-- **Source:** Yelp API, reservation platform data
+### ✅ TIER 1: HIGHLY FEASIBLE SIGNALS (Ready to Implement)
 
-**4. Menu Simplification**
-- Signal: Menu got smaller (indicates operational stress)
-- **Angle:** "Reduce complexity everywhere, including scheduling"
-- **Source:** Web scraping menu archives (Wayback Machine)
+#### **1. Health Inspection Timing**
+**Feasibility:** ✅ **HIGHLY FEASIBLE**
+**Alpha Tier:** Tier 3 (Moderate)
 
-**5. Hours Reduction**
-- Signal: Used to be open 7 days, now 6 days (staffing constraint)
-- **Angle:** "Get back to full operations"
-- **Source:** Google Maps hours history
+**Signal Description:**
+Recent health inspection (within 30-90 days) indicates renewed operational focus and compliance mindset, making it an ideal time to pitch labor law compliance features.
 
-**6. Ghost Kitchen / Virtual Brand Launch**
-- Signal: Added delivery-only brands (DoorDash, Uber Eats)
-- **Angle:** "Managing multiple brands in one kitchen = scheduling complexity"
-- **Source:** Delivery app scraping
+**Why It's Alpha:**
+- Requires tracking city/county health databases that most competitors don't monitor
+- Timing-specific (post-inspection is a compliance-focused window)
+- Not available in standard lead gen tools
 
-**7. Franchise Owner Portfolios**
-- Signal: Franchise operator owns 20+ units across brands
-- **Angle:** Enterprise deal, standardization across portfolio
-- **Source:** Franchise disclosure documents, LinkedIn company pages
+**Data Sources Available:**
+- **Dallas:** Dallas OpenData portal - Restaurant and Food Establishment Inspections (Oct 2016 - Jan 2024)
+- **Miami/Florida:** MyFloridaLicense.com - Division of Hotels and Restaurants inspections
+- **Philadelphia:** Data.gov "Clean Plates: Restaurant Health Inspections" dataset
+- **Atlanta:** City health department portal
+- **National Directory:** Association of Food and Drug Officials state portal links
 
-**8. Glassdoor "Interview Difficulty" Score Decrease**
-- Signal: Interview process got easier (desperate to hire anyone)
-- **Angle:** "Lower the bar OR improve retention"
-- **Source:** Glassdoor Interviews tab
+**Sales Angle:**
+- "I noticed you recently had a health inspection - are you also tracking labor law compliance?"
+- "Post-inspection is a great time to ensure overtime tracking and break compliance"
 
-**9. Manager LinkedIn Job Search Activity**
-- Signal: GM or owner recently active on LinkedIn
-- **Angle:** Thinking about leaving = knows there's a problem
-- **Source:** LinkedIn Sales Navigator
+**Implementation Approach:**
+1. Set up automated scrapers for each city's health inspection database
+2. Filter for restaurants in our target list
+3. Flag inspections within last 30-90 days
+4. Cross-reference with our restaurant database
+5. Add to priority outreach queue
 
-**10. Negative Local News Coverage**
-- Signal: Local news story about labor dispute, walkout, or closure
-- **Angle:** Reputational damage = urgency to fix
-- **Source:** Google News alerts, local news RSS
+**Timing Window:** 30-90 days post-inspection
+**Decay Rate:** Medium (3-month window)
+**Estimated Cost:** $0 (public data)
+**Effort:** Low-Medium (one-time scraper setup per city)
+
+---
+
+#### **2. Liquor License Applications for New Locations**
+**Feasibility:** ✅ **HIGHLY FEASIBLE**
+**Alpha Tier:** Tier 2 (Strong)
+
+**Signal Description:**
+Liquor license applications are filed 3-6 months before restaurant opening, providing early-stage timing signal for new location launches.
+
+**Why It's Alpha:**
+- Lead time of 3-6 months = perfect timing for scheduling system implementation
+- Not tracked by most sales tools
+- Indicates expansion (growth = budget)
+
+**Data Sources Available:**
+- **California:** ABC.ca.gov License Lookup (search by applicant, address, business name)
+- **New York:** SLA.ny.gov Public Query / LAMP system
+- **Illinois:** ILCC.illinois.gov Liquor License Lookup
+- **Arizona:** AZliquor.gov License Search
+- **Colorado:** SBG.colorado.gov - Real-time LED license search + monthly reports
+- **Texas:** TABC.texas.gov License Search
+- **Pennsylvania:** PLCB.pa.gov License Search
+- **Chicago:** Data.cityofchicago.org Liquor License lookup
+
+**Sales Angle:**
+- "I see you filed for a liquor license for [location] - want to get your scheduling system in place before Day 1?"
+- "Most restaurants implement scheduling 3-6 months before opening"
+
+**Implementation Approach:**
+1. Monitor state liquor license databases for new applications
+2. Filter by restaurant/food service license types
+3. Match company names to existing multi-location operators in our database
+4. Track application → approval → opening timeline
+5. Trigger outreach 60-90 days after application filing
+
+**Timing Window:** 3-6 months pre-opening (file to open)
+**Decay Rate:** Slow (predictable timeline)
+**Estimated Cost:** $0 (public data)
+**Effort:** Medium (8 different state systems, varying APIs)
+
+---
+
+#### **3. Menu Simplification**
+**Feasibility:** ✅ **HIGHLY FEASIBLE**
+**Alpha Tier:** Tier 2-3 (Strong to Moderate)
+
+**Signal Description:**
+Menu item count decrease over time (e.g., 45 items → 28 items) indicates operational stress and simplification efforts.
+
+**Why It's Alpha:**
+- Requires historical comparison (Wayback Machine)
+- Signals operational pain (reducing complexity)
+- Conversation starter: "I noticed you simplified your menu - are you also looking to simplify operations?"
+
+**Data Sources Available:**
+- **Wayback Machine API** (archive.org) - Free, comprehensive web archives
+  - Availability API: Check if URL snapshots exist
+  - CDX Server API: Query all captures of a URL with timestamps
+  - Memento API: Time-based snapshot retrieval
+- **Python Tools:** waybackpy, edgi-govdata-archiving/wayback
+
+**Sales Angle:**
+- "I noticed your menu went from 45 items to 28 over the past year - are you also looking to reduce scheduling complexity?"
+- "Operational simplification often includes streamlining labor management"
+
+**Implementation Approach:**
+1. Collect restaurant website menu URLs from our database
+2. Use Wayback Machine Availability API to find historical snapshots (6 months ago, 1 year ago, 2 years ago)
+3. Scrape menu pages from historical snapshots
+4. Count menu items (or total page word count as proxy)
+5. Calculate % change in menu complexity
+6. Flag restaurants with >20% reduction
+
+**Timing Window:** Evergreen (ongoing operational stress)
+**Decay Rate:** Slow (menu changes are gradual)
+**Estimated Cost:** $0 (Wayback Machine is free)
+**Effort:** Medium (scraping menus requires custom logic per website format)
+
+**Challenges:**
+- Menu format varies by website (PDF, HTML table, text)
+- Not all restaurants archive menus on public websites
+- Requires OCR for PDF menus
+
+---
+
+#### **4. Ghost Kitchen / Virtual Brand Launch**
+**Feasibility:** ✅ **HIGHLY FEASIBLE**
+**Alpha Tier:** Tier 2 (Strong)
+
+**Signal Description:**
+Restaurant operating multiple brand names from same address on delivery apps (DoorDash, Uber Eats) = scheduling complexity.
+
+**Why It's Alpha:**
+- DoorDash labels virtual brands; Uber Eats and Grubhub do not
+- Multiple brands in one kitchen = complex labor scheduling
+- Signals growth and operational sophistication
+- Not tracked by traditional lead gen tools
+
+**Data Sources & Context:**
+- **Uber Eats:** 40,000+ virtual restaurants in North America (4x growth in 2 years)
+- **NYC Sample:** 1 in 5 Uber Eats listings are virtual brands
+- **Platform Policies:**
+  - Uber Eats (March 2023): Removing duplicate virtual brands, requiring 50%+ menu differentiation
+  - DoorDash: Virtual brands must be 50%+ differentiated, min 8 items
+- **Detection Method:** Address clustering on delivery apps
+
+**Sales Angle:**
+- "I noticed you're running [Brand A] and [Brand B] from the same kitchen - how are you managing scheduling across multiple menus?"
+- "Managing 3+ virtual brands in one kitchen = scheduling complexity we can solve"
+
+**Implementation Approach:**
+1. Scrape DoorDash, Uber Eats, Grubhub for restaurant listings
+2. Group by address (geocoding for matching)
+3. Identify addresses with 2+ different restaurant names
+4. Verify same ownership (check permit records, corporate filings)
+5. Count number of virtual brands per physical location
+6. Flag locations with 3+ brands
+
+**Timing Window:** Evergreen (ongoing complexity)
+**Decay Rate:** Slow (brands stay active for months/years)
+**Estimated Cost:** $100-500/month (Apify scrapers or custom scraping infrastructure)
+**Effort:** Medium-High (scraping anti-bot protections on delivery apps)
+
+---
+
+#### **5. Franchise Owner Portfolios**
+**Feasibility:** ✅ **HIGHLY FEASIBLE** (but paid)
+**Alpha Tier:** Tier 1-2 (Critical to Strong)
+
+**Signal Description:**
+Multi-unit franchise operators (20+ units across brands) are sophisticated buyers interested in enterprise standardization.
+
+**Why It's Alpha:**
+- FDD Item 20 lists all franchisees + unit counts (not public knowledge)
+- Targets decision-makers who control dozens of locations
+- Enterprise deal potential ($50K-500K+ contracts)
+- Speaks ROI language, not feature language
+
+**Data Sources Available:**
+- **FranChimp:** $167/month - 18,000+ FDDs, 450,000+ franchisees, Multi Unit Database
+- **Restaurantdata:** Subscription pricing - Restaurant-specific FDD tracking, multi-unit franchisee database
+- **FRANdata:** Custom pricing - 40,000+ FDDs over 25 years
+
+**Key FDD Data (Item 20):**
+- Names and contact info of current franchisees
+- Number of outlets per franchisee
+- Franchise vs corporate-owned unit breakdown
+- Ex-franchisee info
+
+**Sales Angle:**
+- "I see you operate 32 Schlotzsky's locations across Texas - are you standardizing scheduling across all units?"
+- "Multi-unit operators like you typically see 15-20% labor cost reduction with centralized scheduling"
+
+**Implementation Approach:**
+1. Subscribe to FranChimp or Restaurantdata ($167-300/month)
+2. Download FDDs for target restaurant brands (Chuy's, Pappadeaux, etc.)
+3. Extract Item 20 franchisee lists
+4. Filter for franchisees with 10+ units
+5. Cross-reference with LinkedIn for current roles
+6. Build "Multi-Unit Operator" target list
+7. Prioritize by total unit count
+
+**Timing Window:** Evergreen (always interested in efficiency)
+**Decay Rate:** Very Slow (FDDs updated annually)
+**Estimated Cost:** $167-300/month (subscription)
+**Effort:** Low (data extraction from PDFs)
+
+**ROI Justification:**
+- 1 enterprise deal (20+ locations) = $50K-200K contract
+- Cost: $2,004/year (FranChimp)
+- Break-even: 1 deal per year
+
+---
+
+#### **6. Negative Local News Coverage**
+**Feasibility:** ✅ **HIGHLY FEASIBLE**
+**Alpha Tier:** Tier 1 (Critical)
+
+**Signal Description:**
+Local news stories about labor disputes, walkouts, closures, or staffing crises = urgent pain + reputational damage.
+
+**Why It's Alpha:**
+- Extreme urgency (public embarrassment)
+- Timing-specific (news coverage = crisis moment)
+- Requires monitoring local news + niche restaurant trade press
+- Not in standard lead gen
+
+**Data Sources Available:**
+- **GNews.io:** $29-99/month - 60,000+ sources worldwide, real-time + 5 years historical, JSON API
+- **ScrapingDog Google News API:** $29-199/month - Real-time news for any query/location/language
+- **Google Alerts:** Free - Email alerts for custom queries
+- **Trade Press RSS:** Nation's Restaurant News, Restaurant Business, FSR Magazine, Eater
+
+**Keywords to Monitor:**
+- "[Restaurant name] + labor dispute"
+- "[Restaurant name] + walkout"
+- "[Restaurant name] + staffing crisis"
+- "[Restaurant name] + employees quit"
+- "[Restaurant name] + temporary closure"
+- "[Restaurant name] + understaffed"
+
+**Sales Angle:**
+- "I saw the news about [incident] - we work with restaurants facing similar challenges to stabilize scheduling and retention"
+- "Post-crisis is the right time to implement systems that prevent this from happening again"
+
+**Implementation Approach:**
+1. Set up Google Alerts for all 1,211 priority restaurants (free baseline)
+2. Subscribe to GNews.io API ($29-99/month)
+3. Daily query for restaurant names + negative keywords
+4. Filter for articles published in last 7 days
+5. Classify severity: walkout/closure (Tier 1), dispute (Tier 2), complaint (Tier 3)
+6. Trigger immediate outreach for Tier 1 incidents
+
+**Timing Window:** 7-30 days post-incident (crisis mode)
+**Decay Rate:** Very Fast (news cycle moves on)
+**Estimated Cost:** $29-99/month (GNews.io) + Google Alerts (free)
+**Effort:** Low (API integration + alert setup)
+
+---
+
+### ⚠️ TIER 2: PARTIALLY FEASIBLE SIGNALS (Workarounds Required)
+
+#### **7. Hours Reduction**
+**Feasibility:** ⚠️ **PARTIALLY FEASIBLE**
+**Alpha Tier:** Tier 2 (Strong)
+
+**Signal Description:**
+Operating hours reduction (e.g., 7 days → 6 days, or 12 hours/day → 8 hours/day) signals staffing constraints.
+
+**Why It's Alpha:**
+- Direct indicator of staffing shortage
+- Timing-specific (recent change = current pain)
+- Requires historical tracking (not commoditized)
+
+**Data Sources Available:**
+- **Google Places API:** Current operating hours available via Place Details endpoint
+  - ✅ Can fetch current hours
+  - ❌ NO historical hours data
+  - ❌ NO change tracking
+
+**Workaround Solution:**
+Build our own historical tracking by querying Google Places API weekly and storing results.
+
+**Sales Angle:**
+- "I noticed you used to be open 7 days but recently reduced to 6 - are you dealing with staffing constraints?"
+- "Restaurants reduce hours due to staffing - let's help you get back to full operations"
+
+**Implementation Approach:**
+1. Query Google Places API for all 8,598 restaurants (current hours)
+2. Store results in database with timestamp
+3. Re-query every 7 days (automated cron job)
+4. Compare current hours vs 30/60/90 days ago
+5. Flag changes:
+   - Days per week reduction (7→6, 7→5)
+   - Hours per day reduction (12→10, 10→8)
+   - Closed days added (now closed Mondays)
+6. Trigger outreach when reduction detected
+
+**Timing Window:** 30-90 days post-reduction (still in pain)
+**Decay Rate:** Medium (hours changes last months)
+**Estimated Cost:** $50-200/month (Google Places API usage)
+**Effort:** Medium (requires building tracking infrastructure)
+
+**Cost Calculation:**
+- Google Places API: $17 per 1,000 Place Details requests
+- 8,598 restaurants × 4 queries/month (weekly) = 34,392 requests/month
+- Cost: $585/month (EXPENSIVE - consider prioritizing top 1,000 restaurants instead)
+- **Optimized:** 1,000 priority restaurants × 4/month = $68/month
+
+---
+
+#### **8. Manager LinkedIn Job Search Activity**
+**Feasibility:** ⚠️ **PARTIALLY FEASIBLE** (Manual only)
+**Alpha Tier:** Tier 3 (Moderate)
+
+**Signal Description:**
+Restaurant GM or owner showing "Open to Work" badge or recent LinkedIn activity indicates dissatisfaction and awareness of problems.
+
+**Why It's Alpha:**
+- Manager leaving = knows there's a problem
+- Early signal (before they quit)
+- Decision-maker in transition = receptive to solutions
+
+**Data Sources Available:**
+- **LinkedIn Sales Navigator:** $99-149/month (UI-based, no API)
+  - "Open to Work" filter for recruiters
+  - "Changed jobs" filter (last 3 months)
+  - "Recent activities" (leadership changes)
+  - Job opportunities filter (companies hiring)
+
+**Limitations:**
+- ❌ No official LinkedIn API for Sales Navigator activity signals
+- ❌ "Open to Work" is private (only visible to recruiters with Recruiter license, not Sales Nav)
+- ⚠️ Requires manual monitoring or UI automation (against ToS)
+
+**Sales Angle:**
+- "I see you recently joined [Restaurant] as GM - are you looking to implement new systems in your first 90 days?"
+- "New managers often want to fix scheduling issues quickly - let's talk"
+
+**Implementation Approach (Manual):**
+1. Subscribe to LinkedIn Sales Navigator ($99-149/month)
+2. Build saved search: "General Manager" OR "Owner" at target restaurants
+3. Set up alerts for:
+   - Job changes (new GMs)
+   - Profile updates
+4. Weekly manual review of GM list for activity
+5. Trigger outreach to new GMs (first 90 days = change window)
+
+**Implementation Approach (Automated - Risky):**
+- Use browser automation (Puppeteer, Playwright) to scrape Sales Navigator
+- ⚠️ Violates LinkedIn ToS - risk of account ban
+- Not recommended
+
+**Timing Window:** 0-90 days after job change (new GM window)
+**Decay Rate:** Fast (first 90 days are key)
+**Estimated Cost:** $99-149/month (Sales Navigator)
+**Effort:** Medium-High (manual monitoring required)
+
+**Recommendation:** Deprioritize unless willing to do manual weekly reviews.
+
+---
+
+### ❌ TIER 3: LIMITED/NOT FEASIBLE SIGNALS (Blocked or Prohibitive)
+
+#### **9. Yelp Waitlist/Reservation Wait Times**
+**Feasibility:** ❌ **LIMITED - Partnership Required**
+**Alpha Tier:** Tier 2-3 (Strong to Moderate)
+
+**Signal Description:**
+Consistently high wait times (30+ min waitlist) = high volume = complex scheduling needs.
+
+**Why It's Alpha:**
+- Indicates demand exceeding capacity
+- Chronic wait times = need to optimize labor for peaks
+- Not available in standard lead gen
+
+**Data Sources Available:**
+- **Yelp Waitlist API:** Requires onboarded Yelp Waitlist partner status
+  - GET /v3/businesses/{id}/waitlist/status
+  - POST /v3/businesses/{id}/waitlist/visits
+- **Yelp Reservations API:** Requires Yelp Reservations partner status
+  - Search businesses with reservations
+  - Get available times
+- **Yelp Guest Manager (Enterprise):** Custom pricing - includes API access + data feed
+
+**Limitation:**
+- ❌ Not available via public Yelp Fusion API
+- ❌ Requires partnership agreement with Yelp
+- ❌ Pricing not publicly disclosed (Enterprise tier)
+
+**Sales Angle (if access obtained):**
+- "I see you consistently have 45-minute waits on weekends - are you optimizing labor for those peaks?"
+- "High-volume restaurants like yours need demand-based scheduling"
+
+**Workaround:**
+- Manually check Yelp waitlist times during peak hours (Friday/Saturday 7-8pm)
+- Note restaurants with consistent 30+ min waits
+- Use as qualitative research signal, not automated
+
+**Timing Window:** Evergreen (chronic demand)
+**Decay Rate:** Slow (high volume persists)
+**Estimated Cost:** Unknown (Enterprise pricing)
+**Effort:** High (partnership negotiations)
+
+**Recommendation:** Deprioritize unless existing Yelp partnership or willing to pay Enterprise tier.
+
+---
+
+#### **10. Glassdoor "Interview Difficulty" Score Decrease**
+**Feasibility:** ❌ **NOT FEASIBLE**
+**Alpha Tier:** Tier 3 (Moderate)
+
+**Signal Description:**
+Interview difficulty rating decrease (e.g., 3.5/5 → 2.0/5) indicates lowered hiring standards = desperation to fill roles.
+
+**Why It Would Be Alpha:**
+- Lowering bar = recruiting desperation
+- Timing-specific (difficulty changes signal current pain)
+- Requires historical tracking (not commoditized)
+
+**Data Sources Available:**
+- **Glassdoor API:** Closed to public in 2021
+  - Employers can still access (restricted)
+  - ❌ No public API access
+  - ❌ No historical rating data (only current ratings)
+
+**Limitation:**
+- ❌ API closed in 2021
+- ❌ Cannot access historical interview difficulty scores
+- ❌ Only current ratings available (no change tracking)
+
+**Research Finding:**
+- Glassdoor research shows 4/5 interview difficulty = optimal for employee satisfaction
+- Average interview length increased from 12 days (2010) to 23 days (2013)
+- But no API to track this data per restaurant
+
+**Sales Angle (if access obtained):**
+- "Your interview difficulty dropped from 3.5 to 2.0 - are you lowering the bar to fill positions faster?"
+- "Desperate hiring often means broken retention - let's fix scheduling"
+
+**Workaround:**
+- Manual monitoring of Glassdoor interview reviews
+- Qualitative assessment: "process was very easy" vs "rigorous multi-round"
+- Not scalable
+
+**Timing Window:** 30-90 days after difficulty drop
+**Decay Rate:** Medium
+**Estimated Cost:** N/A (no access)
+**Effort:** N/A
+
+**Recommendation:** ❌ Deprioritize entirely - no feasible access method.
+
+---
+
+## SUMMARY: NEXT-LEVEL SIGNALS PRIORITIZATION
+
+### 🚀 IMPLEMENT IMMEDIATELY (High ROI, Low Effort)
+
+1. **Negative Local News Coverage** - GNews.io API ($29-99/month) + Google Alerts (free)
+2. **Health Inspection Timing** - Free public data, one-time scraper setup
+3. **Liquor License Applications** - Free public data, medium setup effort
+
+### 📊 IMPLEMENT NEXT (High ROI, Medium Effort)
+
+4. **Franchise Owner Portfolios** - $167/month FranChimp subscription, enterprise deal potential
+5. **Ghost Kitchen/Virtual Brand Launch** - $100-500/month scraping costs
+6. **Menu Simplification** - Free Wayback Machine API, custom scraping logic
+
+### ⏳ IMPLEMENT LATER (Requires Infrastructure)
+
+7. **Hours Reduction** - $68/month Google API (1,000 restaurants), requires tracking database
+
+### 🤷 DEPRIORITIZE (Manual or Blocked)
+
+8. **Manager LinkedIn Activity** - Manual monitoring only, $99-149/month Sales Navigator
+9. **Yelp Waitlist/Wait Times** - Partnership required, unknown cost
+10. **Glassdoor Interview Difficulty** - Not feasible (API closed)
 
 ---
 
