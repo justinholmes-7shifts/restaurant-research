@@ -143,7 +143,7 @@ def main():
 
     # Read CSV
     restaurants = []
-    with open('restaurants_data.csv', 'r', encoding='utf-8') as f:
+    with open('data/raw/restaurants_data.csv', 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
             restaurants.append(row)
@@ -280,7 +280,7 @@ def main():
     print("EXPORTING RESULTS")
     print("=" * 80)
 
-    with open('high_quality_leads.csv', 'w', newline='', encoding='utf-8') as f:
+    with open('data/processed/high_quality_leads.csv', 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['name', 'score', 'city', 'address', 'phone', 'email', 'company_email',
                      'title', 'first_name', 'last_name', 'linkedin', 'website', 'rating',
                      'reviews', 'dm_level', 'staffing_indicators', 'email_valid']
@@ -292,10 +292,10 @@ def main():
             lead_copy['staffing_indicators'] = '; '.join(lead_copy['staffing_indicators'])
             writer.writerow(lead_copy)
 
-    print(f"✓ Exported {len(high_quality_leads)} high quality leads to high_quality_leads.csv")
+    print(f"✓ Exported {len(high_quality_leads)} high quality leads to data/processed/high_quality_leads.csv")
 
     # Export decision makers separately
-    with open('scheduling_decision_makers.csv', 'w', newline='', encoding='utf-8') as f:
+    with open('data/processed/scheduling_decision_makers.csv', 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['name', 'score', 'city', 'address', 'phone', 'email', 'company_email',
                      'title', 'first_name', 'last_name', 'linkedin', 'website', 'rating',
                      'reviews', 'email_valid']
@@ -303,7 +303,7 @@ def main():
         writer.writeheader()
         writer.writerows(decision_makers)
 
-    print(f"✓ Exported {len(decision_makers)} decision makers to scheduling_decision_makers.csv")
+    print(f"✓ Exported {len(decision_makers)} decision makers to data/processed/scheduling_decision_makers.csv")
 
     print("\n" + "=" * 80)
     print("SUMMARY")

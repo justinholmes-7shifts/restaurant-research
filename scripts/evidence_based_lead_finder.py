@@ -105,7 +105,7 @@ def main():
 
     # Read CSV
     restaurants = []
-    with open('restaurants_data.csv', 'r', encoding='utf-8') as f:
+    with open('data/raw/restaurants_data.csv', 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
             restaurants.append(row)
@@ -178,7 +178,7 @@ def main():
         print()
 
     # Export to CSV for tracking research
-    with open('research_priority_list.csv', 'w', newline='', encoding='utf-8') as f:
+    with open('data/leads/research_priority_list.csv', 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['priority_rank', 'name', 'priority_score', 'contact_name', 'title',
                      'email', 'phone', 'address', 'website', 'rating', 'reviews',
                      'research_status', 'evidence_found', 'staffing_pain_score', 'notes']
@@ -207,7 +207,7 @@ def main():
     print("\n" + "=" * 80)
     print("RESEARCH TRACKING")
     print("=" * 80)
-    print(f"✓ Created research_priority_list.csv with {len(research_candidates)} restaurants")
+    print(f"✓ Created data/leads/research_priority_list.csv with {len(research_candidates)} restaurants")
     print("\nThis file has columns for:")
     print("  - research_status: Track 'Not Started', 'In Progress', 'Completed'")
     print("  - evidence_found: 'Yes' or 'No'")

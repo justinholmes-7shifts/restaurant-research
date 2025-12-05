@@ -4,7 +4,7 @@ Compile Evidence-Based Leads
 Takes manual research findings and creates a qualified leads list.
 
 Usage:
-1. First run: evidence_based_lead_finder.py (creates research_priority_list.csv)
+1. First run: evidence_based_lead_finder.py (creates data/leads/research_priority_list.csv)
 2. Manually research top restaurants and fill in:
    - research_status
    - evidence_found (Yes/No)
@@ -120,7 +120,7 @@ RESEARCHED_RESTAURANTS = {
 def load_research_priority_list() -> List[Dict]:
     """Load the research priority list CSV."""
     try:
-        with open('research_priority_list.csv', 'r', encoding='utf-8') as f:
+        with open('data/leads/research_priority_list.csv', 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f)
             return list(reader)
     except FileNotFoundError:
@@ -134,7 +134,7 @@ def main():
     research_list = load_research_priority_list()
 
     if not research_list:
-        print("ERROR: research_priority_list.csv not found")
+        print("ERROR: data/leads/research_priority_list.csv not found")
         print("Run evidence_based_lead_finder.py first")
         return
 
@@ -186,7 +186,7 @@ def main():
         print()
 
     # Export qualified leads
-    with open('qualified_leads_with_evidence.csv', 'w', newline='', encoding='utf-8') as f:
+    with open('data/leads/qualified_leads_with_evidence.csv', 'w', newline='', encoding='utf-8') as f:
         fieldnames = ['rank', 'name', 'pain_score', 'contact_name', 'title', 'email',
                      'phone', 'address', 'website', 'recommendation', 'evidence_summary']
         writer = csv.DictWriter(f, fieldnames=fieldnames)
@@ -259,7 +259,7 @@ def main():
    → Malai Kitchen (already uses 7shifts)
 
 4. CONTINUE RESEARCH
-   - Use research_priority_list.csv
+   - Use data/leads/research_priority_list.csv
    - Research top 20 restaurants manually
    - Fill in evidence_found column
    - Update this script with findings
@@ -268,7 +268,7 @@ def main():
     print("\n" + "=" * 80)
     print("FILES CREATED")
     print("=" * 80)
-    print("✓ qualified_leads_with_evidence.csv - Import to CRM")
+    print("✓ data/leads/qualified_leads_with_evidence.csv - Import to CRM")
     print(f"✓ {len(qualified_leads)} leads with actual staffing evidence")
     print("\nEstimated Conversion Rate: 35-50% (vs 5-10% without evidence)")
 
